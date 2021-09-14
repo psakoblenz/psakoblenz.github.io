@@ -3085,7 +3085,7 @@ table th {
   font-size: 0.9rem;
   font-weight: 400;
   padding: 0 0.75rem 0.75rem 0.75rem;
-  text-align: left;
+  text-align: center;
 }
 
 table thead {
@@ -8647,7 +8647,6 @@ footer {
   display: inline-block;
   margin: 1rem;
   position: relative;
-  width: 300px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -8705,4 +8704,117 @@ footer {
 .card .btn a:hover {
   background-size: 100% 100%;
   cursor: pointer;
+}
+
+/* The SIMPLE-TOAST - position it at the bottom and in the middle of the screen */
+#simpleToast {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  margin-left: -152px; /* Divide value of min-width by 2 */
+  background-color: #397029; /* Background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: monospace;
+  display: inline-flex;
+  line-height: 12px;
+  font-size: 16px;
+}
+
+#simpleToast span {
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+/* Show the SIMPLE-TOAST when clicking on a button (class added with JavaScript) */
+#simpleToast.show {
+  visibility: visible; /* Show the SIMPLE-TOAST */
+  /* Add animation: Take 0.5 seconds to fade in and out the SIMPLE-TOAST.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the SIMPLE-TOAST in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+#members a {
+  text-decoration: none;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 100%;
+  background: #ffffffcf;
+}
+
+@media only screen and (max-width: 512px) {
+  #logo {
+    margin-left: -60px;
+    top: 60px;
+    left: 50%;
+  }
+}
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 500px;
+  width: 100%;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+  width: 100%;
 }

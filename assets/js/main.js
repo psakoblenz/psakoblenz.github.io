@@ -295,4 +295,47 @@
         $modal.addClass("loaded");
       }, 275);
     });
+
+  const getFormData = (form) => {
+    var unindexed_array = $(form).serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function (n, i) {
+      indexed_array[n["name"]] = n["value"];
+    });
+
+    return indexed_array;
+  };
+
+  $("#submit").on("click", (e) => {
+    e.preventDefault();
+    const data = getFormData("#get-in-touch-form");
+    formSubmit(data);
+  });
+
+  const formSubmit = (data) => {
+    // Sending email via formsubmit.co
+    try {
+      $.ajax({
+        url: "https://formsubmit.co/ajax/psa.koblenz@gmail.com",
+        method: "POST",
+        data,
+        dataType: "json",
+        complete: () => {
+          simpleToast();
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const simpleToast = () => {
+    // Get the SIMPLE-TOAST DIV
+    var x = document.getElementById("simpleToast");
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
 })(jQuery);
