@@ -307,24 +307,18 @@
     return indexed_array;
   };
 
-  $(document).ready(function() {
-    $('#whatsappform').on('submit', function(event) {
+
+    $('#WhatsappGroupForm').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
-        
         $.ajax({
             url: 'https://formsubmit.co/psa.koblenz@gmail.com', // Replace with your formsubmit.co endpoint
             method: 'POST',
-            data: $(this).serialize(), // Serialize the form data
+            data: $('#WhatsappGroupForm').serialize(), // Serialize the form data
             dataType: 'json',
             success: function(response) {
-                alert('Form submitted successfully!');
-                $('#whatsappform')[0].reset(); // Reset the form fields
-            },
-            error: function(error) {
-                console.log(error);
+              simpleToast();
             }
         });
-    });
 });
   // $("#submit").on("click", (e) => {
   //   e.preventDefault();
@@ -349,12 +343,12 @@
   //   }
   // };
 
-  // const simpleToast = () => {
-  //   // Get the SIMPLE-TOAST DIV
-  //   var x = document.getElementById("simpleToast");
-  //   // Add the "show" class to DIV
-  //   x.className = "show";
-  //   // After 3 seconds, remove the show class from DIV
-  //   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-  // }
+  const simpleToast = () => {
+    // Get the SIMPLE-TOAST DIV
+    var x = document.getElementById("simpleToast");
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
 })(jQuery);
