@@ -307,35 +307,54 @@
     return indexed_array;
   };
 
-  $("#submit").on("click", (e) => {
-    e.preventDefault();
-    const data = getFormData("#get-in-touch-form");
-    formSubmit(data);
-  });
+  $(document).ready(function() {
+    $('#whatsappform').on('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        $.ajax({
+            url: 'https://formsubmit.co/psa.koblenz@gmail.com', // Replace with your formsubmit.co endpoint
+            method: 'POST',
+            data: $(this).serialize(), // Serialize the form data
+            dataType: 'json',
+            success: function(response) {
+                alert('Form submitted successfully!');
+                $('#whatsappform')[0].reset(); // Reset the form fields
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+  // $("#submit").on("click", (e) => {
+  //   e.preventDefault();
+  //   const data = getFormData("#get-in-touch-form");
+  //   formSubmit(data);
+  // });
 
-  const formSubmit = (data) => {
-    // Sending email via formsubmit.co
-    try {
-      $.ajax({
-        url: "https://formsubmit.co/ajax/psa.koblenz@gmail.com",
-        method: "POST",
-        data,
-        dataType: "json",
-        complete: () => {
-          simpleToast();
-        }
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const formSubmit = (data) => {
+  //   // Sending email via formsubmit.co
+  //   try {
+  //     $.ajax({
+  //       url: "https://formsubmit.co/ajax/psa.koblenz@gmail.com",
+  //       method: "POST",
+  //       data,
+  //       dataType: "json",
+  //       complete: () => {
+  //         simpleToast();
+  //       }
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
-  const simpleToast = () => {
-    // Get the SIMPLE-TOAST DIV
-    var x = document.getElementById("simpleToast");
-    // Add the "show" class to DIV
-    x.className = "show";
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-  }
+  // const simpleToast = () => {
+  //   // Get the SIMPLE-TOAST DIV
+  //   var x = document.getElementById("simpleToast");
+  //   // Add the "show" class to DIV
+  //   x.className = "show";
+  //   // After 3 seconds, remove the show class from DIV
+  //   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  // }
 })(jQuery);
