@@ -308,12 +308,12 @@
   };
 
 
-    $('#WhatsappGroupForm').on('submit', function(event) {
+    $('#whatsappform').on('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
         $.ajax({
-            url: 'https://formsubmit.co/psa.koblenz@gmail.com', // Replace with your formsubmit.co endpoint
+            url: 'https://formsubmit.co/ajax/psa.koblenz@gmail.com', // Replace with your formsubmit.co endpoint
             method: 'POST',
-            data: $('#WhatsappGroupForm').serialize(), // Serialize the form data
+            data: $('#whatsappform').serialize(), // Serialize the form data
             dataType: 'json',
             success: function(response) {
               simpleToast();
