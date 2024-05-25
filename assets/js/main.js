@@ -317,6 +317,7 @@
             dataType: 'json',
             success: function(response) {
               simpleToast();
+              document.getElementById("whatsappform").reset();
             }
         });
 });
